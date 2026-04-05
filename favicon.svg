@@ -1,0 +1,7 @@
+<svg width="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Main hexagon outline - darker, thicker stroke -->
+  <polygon points="100,30 155,63 155,130 100,163 45,130 45,63" fill="none" stroke="#1371cf" stroke-width="8" stroke-linejoin="round"/>
+  
+  <!-- Center circle - bright accent -->
+  <circle cx="100" cy="97" r="20" fill="#378ADD"/>
+</svg>
