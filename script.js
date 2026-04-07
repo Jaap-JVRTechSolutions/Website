@@ -1,4 +1,3 @@
-// Embedded site data
 const siteData = {
     "services": [
         {
@@ -69,7 +68,6 @@ const siteData = {
     ]
 };
 
-// Populate services
 function loadServices(data) {
     const grid = document.getElementById('servicesGrid');
     if (!grid) return;
@@ -85,7 +83,6 @@ function loadServices(data) {
     });
 }
 
-// Populate skills
 function loadSkills(data) {
     const container = document.getElementById('skillsContainer');
     if (!container) return;
@@ -101,7 +98,6 @@ function loadSkills(data) {
     });
 }
 
-// Scroll reveal
 function setupReveal() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry, i) => {
@@ -118,7 +114,6 @@ function setupReveal() {
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
 
-// Nav scroll shadow
 function setupNav() {
     const nav = document.getElementById('navbar');
     const hamburger = document.querySelector('.hamburger');
@@ -140,73 +135,37 @@ function setupNav() {
     }
 }
 
-// Load header
-function loadHeader() {
+async function loadHeader() {
     const headerPlaceholder = document.getElementById('header-placeholder');
     if (headerPlaceholder) {
-        const isMainPage = window.location.pathname.includes('index.html') || window.location.pathname === '/' || window.location.pathname === '';
-        const headerHTML = isMainPage ? `<!-- Navigation -->
-<nav id="navbar">
-    <div class="container">
-        <div class="logo">
-            <span class="nav-brand">JVR Tech Solutions</span>
-        </div>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#contact" class="nav-cta">Contact</a></li>
-        </ul>
-        <button class="hamburger" aria-label="Toggle menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </div>
-</nav>` : `<!-- Navigation -->
-<nav id="navbar">
-    <div class="container">
-        <div class="logo">
-            <span class="nav-brand">JVR Tech Solutions</span>
-        </div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
-        </ul>
-        <button class="hamburger" aria-label="Toggle menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </div>
-</nav>`;
-        headerPlaceholder.innerHTML = headerHTML;
-        setupNav(); // Call setupNav after header is loaded
+        try {
+            const response = await fetch('header-main.html');
+            const html = await response.text();
+            headerPlaceholder.innerHTML = html;
+            setupNav(); // Call setupNav after header is loaded
+        } catch (error) {
+            console.error('Failed to load header:', error);
+        }
     }
 }
 
-// Load footer
-function loadFooter() {
+async function loadFooter() {
     const footerPlaceholder = document.getElementById('footer-placeholder');
     if (footerPlaceholder) {
-        const footerHTML = `<footer>
-    <p>© 2026 JVR Tech Solutions | KVK: 42016921 | BTW: [Your BTW Number]</p>
-    <p><a href="terms.html">Terms of Service</a> | <a href="cookies.html">Cookie Policy</a></p>
-    <p>Designed and built by Jaap van Rooijen</p>
-</footer>`;
-        footerPlaceholder.innerHTML = footerHTML;
+        try {
+            const response = await fetch('footer.html');
+            const html = await response.text();
+            footerPlaceholder.innerHTML = html;
+        } catch (error) {
+            console.error('Failed to load footer:', error);
+        }
     }
 }
 
-// Init
-document.addEventListener('DOMContentLoaded', () => {
-    loadHeader();
+document.addEventListener('DOMContentLoaded', async () => {
+    await loadHeader();
+    await loadFooter();
     loadServices(siteData);
     loadSkills(siteData);
-    loadFooter();
-    // Wait a tick for dynamic elements to be in the DOM
-    setTimeout(() => {
-        setupReveal();
-    }, 50);
+    setupReveal();
 });
