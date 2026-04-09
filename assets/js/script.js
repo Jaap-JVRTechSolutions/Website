@@ -68,6 +68,22 @@ const siteData = {
     ]
 };
 
+function isNestedPage() {
+    return window.location.pathname.replace(/\\/g, '/').includes('/assets/pages/');
+}
+
+function getIncludePath(fileName) {
+    return isNestedPage() ? `../includes/${fileName}` : `assets/includes/${fileName}`;
+}
+
+function getHomeSectionHref(anchor) {
+    return isNestedPage() ? `../../index.html${anchor}` : anchor;
+}
+
+function getTermsHref() {
+    return isNestedPage() ? 'terms-nl.html' : 'assets/pages/terms-nl.html';
+}
+
 function loadServices(data) {
     const grid = document.getElementById('servicesGrid');
     if (!grid) return;
@@ -135,13 +151,27 @@ function setupNav() {
     }
 }
 
+function updateSharedLinks() {
+    if (isNestedPage()) {
+        document.querySelectorAll('#navbar a[href^="#"]').forEach((link) => {
+            link.setAttribute('href', getHomeSectionHref(link.getAttribute('href')));
+        });
+    }
+
+    const termsLink = document.querySelector('[data-terms-link]');
+    if (termsLink) {
+        termsLink.setAttribute('href', getTermsHref());
+    }
+}
+
 async function loadHeader() {
     const headerPlaceholder = document.getElementById('header-placeholder');
     if (headerPlaceholder) {
         try {
-            const response = await fetch('header-main.html');
+            const response = await fetch(getIncludePath('header-main.html'));
             const html = await response.text();
             headerPlaceholder.innerHTML = html;
+            updateSharedLinks();
             setupNav(); // Call setupNav after header is loaded
         } catch (error) {
             console.error('Failed to load header:', error);
@@ -153,9 +183,10 @@ async function loadFooter() {
     const footerPlaceholder = document.getElementById('footer-placeholder');
     if (footerPlaceholder) {
         try {
-            const response = await fetch('footer.html');
+            const response = await fetch(getIncludePath('footer.html'));
             const html = await response.text();
             footerPlaceholder.innerHTML = html;
+            updateSharedLinks();
         } catch (error) {
             console.error('Failed to load footer:', error);
         }
