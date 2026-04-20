@@ -1,57 +1,24 @@
 const siteData = {
-    "services": [
-        {
-            "id": 1,
-            "title": "Enterprise Backend Development",
-            "description": "Design and build scalable, maintainable backend systems using .NET. Following SOLID principles and clean architecture patterns for long-term success."
-        },
-        {
-            "id": 2,
-            "title": "Cloud Architecture & Azure",
-            "description": "Design and implement cloud-native solutions on Microsoft Azure. Including app services, functions, databases, and integration patterns."
-        },
-        {
-            "id": 3,
-            "title": "API Development & Integration",
-            "description": "Build robust RESTful and modern APIs. Design secure, scalable connectors that integrate your systems seamlessly with external services."
-        },
-        {
-            "id": 4,
-            "title": "CI/CD & DevOps Automation",
-            "description": "Establish automated deployment pipelines and infrastructure as code. Reduce manual work and improve deployment reliability and frequency."
-        },
-        {
-            "id": 5,
-            "title": "System Architecture & Design",
-            "description": "Strategic architecture decisions for scalability, resilience, and maintainability. Building systems that grow with your business."
-        },
-        {
-            "id": 6,
-            "title": "Performance & Security Optimization",
-            "description": "Identify and eliminate bottlenecks. Implement security hardening, threat modeling, and compliance controls across your applications."
-        }
-    ],
     "skills": [
         {
             "id": 1,
-            "category": "Languages & Frameworks",
+            "category": "Core Engineering Stack",
             "items": [
                 "C# & .NET (8+ years)",
-                ".NET Core / .NET 5+",
                 "ASP.NET Core",
-                "Entity Framework",
+                "Entity Framework Core",
                 "SQL Server"
             ]
         },
         {
             "id": 2,
-            "category": "Cloud & DevOps",
+            "category": "Azure Cloud Delivery",
             "items": [
-                "Microsoft Azure",
                 "Azure App Service",
                 "Azure Functions",
                 "Azure SQL Database",
-                "CI/CD Pipelines"
+                "Azure DevOps",
+                "IaC: Bicep & ARM Templates"
             ]
         },
         {
@@ -59,10 +26,10 @@ const siteData = {
             "category": "Architecture & Practices",
             "items": [
                 "Microservices",
-                "API Design",
-                "Security & Compliance",
-                "System Design",
-                "Scalability Patterns"
+                "RESTful API Design",
+                "CI/CD Pipelines",
+                "Clean Code",
+                "System Design & Scalability"
             ]
         }
     ]
@@ -82,21 +49,6 @@ function getHomeSectionHref(anchor) {
 
 function getTermsHref() {
     return isNestedPage() ? 'terms-nl.html' : 'assets/pages/terms-nl.html';
-}
-
-function loadServices(data) {
-    const grid = document.getElementById('servicesGrid');
-    if (!grid) return;
-    data.services.forEach((service, i) => {
-        const card = document.createElement('div');
-        card.className = 'service-card reveal';
-        card.innerHTML = `
-            <div class="service-number">0${i + 1}</div>
-            <h3>${service.title}</h3>
-            <p>${service.description}</p>
-        `;
-        grid.appendChild(card);
-    });
 }
 
 function loadSkills(data) {
@@ -203,7 +155,6 @@ async function loadFooter() {
 document.addEventListener('DOMContentLoaded', async () => {
     await loadHeader();
     await loadFooter();
-    loadServices(siteData);
     loadSkills(siteData);
     setupReveal();
 });

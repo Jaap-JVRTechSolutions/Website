@@ -155,14 +155,14 @@ body {
 
 .hero::after {
     content: '';
-    position: absolute;
+    position: relative;
     bottom: 0;
     left: 0;
     right: 0;
     height: 90px;
     background: linear-gradient(to bottom, transparent 0%, var(--surface) 50%, var(--surface-alt) 100%);
     pointer-events: none;
-    z-index: 2;
+    z-index: 0;
 }
 
 .hero-bg {
@@ -251,7 +251,7 @@ body {
     content: '';
     width: 6px;
     height: 6px;
-    background: var(--blue-mid);
+    background: #45c961;
     border-radius: 50%;
     animation: pulse 2s infinite;
 }
@@ -590,119 +590,6 @@ section h2 {
     line-height: 1.6;
 }
 
-/* ─── SERVICES ──────────────────────────────────────────────── */
-.services {
-    background: white;
-}
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-}
-
-.service-card {
-    padding: 2rem;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-    background: white;
-}
-
-.service-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--blue-mid), var(--blue-light));
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s;
-}
-
-.service-card:hover {
-    border-color: var(--blue-light);
-    box-shadow: 0 12px 40px rgba(19,113,207,0.1);
-    transform: translateY(-4px);
-}
-
-.service-card:hover::before {
-    transform: scaleX(1);
-}
-
-.service-number {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
-    font-weight: 500;
-    color: var(--blue-light);
-    letter-spacing: 0.1em;
-    margin-bottom: 1rem;
-}
-
-.service-card h3 {
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: var(--ink);
-    margin-bottom: 0.75rem;
-    line-height: 1.3;
-}
-
-.service-card p {
-    font-size: 0.9rem;
-    color: var(--ink-muted);
-    line-height: 1.7;
-}
-
-/* Tech stack strip */
-.tech-strip {
-    margin-top: 4rem;
-    padding: 2.5rem 3rem;
-    background: var(--ink);
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    gap: 3rem;
-    flex-wrap: wrap;
-}
-
-.tech-strip-label {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: rgba(255,255,255,0.4);
-    font-weight: 600;
-    white-space: nowrap;
-    font-family: 'JetBrains Mono', monospace;
-}
-
-.tech-strip-items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    flex: 1;
-}
-
-.tech-pill {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    padding: 0.4rem 0.9rem;
-    background: rgba(255,255,255,0.06);
-    color: rgba(255,255,255,0.75);
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.1);
-    transition: all 0.2s;
-}
-
-.tech-pill:hover {
-    background: rgba(55,138,221,0.2);
-    border-color: var(--blue-light);
-    color: var(--blue-light);
-}
-
 /* ─── SKILLS ────────────────────────────────────────────────── */
 .skills {
     background: var(--surface);
@@ -769,6 +656,90 @@ section h2 {
     min-width: 6px;
     background: var(--blue-light);
     border-radius: 50%;
+}
+
+/* ─── SERVICES ──────────────────────────────────────────── */
+.services {
+    background: var(--surface-alt);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.service-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 2rem;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--blue-mid), var(--blue-light));
+    opacity: 0;
+    transition: opacity 0.25s;
+}
+
+.service-card:hover {
+    border-color: var(--blue-light);
+    box-shadow: 0 10px 30px rgba(19,113,207,0.1);
+    transform: translateY(-3px);
+}
+
+.service-card:hover::before {
+    opacity: 1;
+}
+
+.service-icon {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.service-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+}
+
+.service-card p {
+    font-size: 0.92rem;
+    color: var(--ink-muted);
+    line-height: 1.75;
+    font-weight: 300;
+    margin-bottom: 1.25rem;
+}
+
+.service-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.service-tags li {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+    background: var(--blue-pale);
+    color: var(--blue-deep);
+    border-radius: 4px;
+    font-weight: 500;
+    border: 1px solid rgba(19,113,207,0.12);
 }
 
 /* ─── EXPERIENCE ────────────────────────────────────────────── */
@@ -1004,6 +975,52 @@ section h2 {
 .contact-link--email .contact-link-icon {
     background: rgba(255,255,255,0.18);
     border-color: rgba(255,255,255,0.3);
+}
+
+.contact-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.contact-checklist li {
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.65);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 300;
+}
+
+.contact-checklist li::before {
+    content: '✓';
+    color: var(--blue-light);
+    font-weight: 700;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+
+.btn-contact-cta {
+    display: inline-flex;
+    align-items: center;
+    background: var(--blue-mid);
+    color: white;
+    padding: 0.85rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.25s;
+    box-shadow: 0 4px 20px rgba(19,113,207,0.4);
+}
+
+.btn-contact-cta:hover {
+    background: var(--blue-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(19,113,207,0.5);
 }
 
 /* ─── TERMS PAGE ───────────────────────────────────────────── */
@@ -1383,16 +1400,63 @@ section h2 {
 /* ─── FOOTER ────────────────────────────────────────────────── */
 footer {
     background: #111520;
-    padding: 1.75rem 2rem;
-    text-align: center;
-    font-size: 0.82rem;
+    padding: 2.5rem 2rem;    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
     color: rgba(255,255,255,0.25);
-    font-family: 'JetBrains Mono', monospace;
     letter-spacing: 0.03em;
 }
 
-footer p + p {
-    margin-top: 0.45rem;
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 2rem 4rem;
+    align-items: center;
+}
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.footer-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.06em;
+}
+
+.footer-tagline {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.3);
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    align-items: flex-end;
+}
+
+.footer-links a {
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+    font-size: 0.78rem;
+}
+
+.footer-links a:hover {
+    color: rgba(255,255,255,0.8);
+}
+
+.footer-meta {
+    text-align: right;
+}
+
+.footer-meta p + p {
+    margin-top: 0.4rem;
 }
 
 /* ─── ANIMATIONS ────────────────────────────────────────────── */
@@ -1432,7 +1496,6 @@ footer p + p {
         display: none;
     }
 
-    .services-grid,
     .skills-container {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -1480,15 +1543,11 @@ footer p + p {
         margin: 0.25rem 1.5rem;
         border-radius: 6px;
     }
-    .services-grid,
     .skills-container {
         grid-template-columns: 1fr;
     }
-    .tech-strip {
-        flex-direction: column;
-        gap: 1.5rem;
-        align-items: flex-start;
-        padding: 2rem;
+    .services-grid {
+        grid-template-columns: 1fr;
     }
     section {
         padding: 70px 0;
