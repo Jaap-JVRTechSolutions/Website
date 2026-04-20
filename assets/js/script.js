@@ -148,6 +148,13 @@ function setupNav() {
             hamburger.classList.toggle('active');
             navUl.classList.toggle('active');
         });
+
+        document.addEventListener('click', (e) => {
+            if (!nav.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navUl.classList.remove('active');
+            }
+        });
     }
 }
 

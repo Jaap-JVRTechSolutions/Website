@@ -159,7 +159,7 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 120px;
+    height: 90px;
     background: linear-gradient(to bottom, transparent 0%, var(--surface) 50%, var(--surface-alt) 100%);
     pointer-events: none;
     z-index: 2;
@@ -301,6 +301,7 @@ body {
     gap: 1rem;
     align-items: center;
     flex-wrap: wrap;
+    margin-bottom: 2rem;
 }
 
 .btn-primary {
@@ -1390,6 +1391,10 @@ footer {
     letter-spacing: 0.03em;
 }
 
+footer p + p {
+    margin-top: 0.45rem;
+}
+
 /* ─── ANIMATIONS ────────────────────────────────────────────── */
 @keyframes fadeUp {
     from {
@@ -1470,6 +1475,10 @@ footer {
         font-size: 0.9rem;
         padding: 0.8rem 1rem;
         display: block;
+    }
+    #navbar .nav-cta {
+        margin: 0.25rem 1.5rem;
+        border-radius: 6px;
     }
     .services-grid,
     .skills-container {
