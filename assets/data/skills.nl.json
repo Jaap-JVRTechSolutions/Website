@@ -1,0 +1,36 @@
+{
+  "skills": [
+    {
+      "id": 1,
+      "category": "Engineering Stack",
+      "items": [
+        "C# & .NET (8+ jaar)",
+        "ASP.NET Core",
+        "Entity Framework Core",
+        "SQL Server"
+      ]
+    },
+    {
+      "id": 2,
+      "category": "Azure Cloud",
+      "items": [
+        "Azure App Service",
+        "Azure Functions",
+        "Azure SQL Database",
+        "Azure DevOps",
+        "IaC: Bicep & ARM Templates"
+      ]
+    },
+    {
+      "id": 3,
+      "category": "Architectuur & Werkwijzen",
+      "items": [
+        "Microservices",
+        "RESTful API Ontwerp",
+        "CI/CD Pipelines",
+        "Clean Code",
+        "Systeemontwerp & Schaalbaarheid"
+      ]
+    }
+  ]
+}

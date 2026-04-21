@@ -1,39 +1,46 @@
-const siteData = {
-    "skills": [
-        {
-            "id": 1,
-            "category": "Core Engineering Stack",
-            "items": [
-                "C# & .NET (8+ years)",
-                "ASP.NET Core",
-                "Entity Framework Core",
-                "SQL Server"
-            ]
-        },
-        {
-            "id": 2,
-            "category": "Azure Cloud Delivery",
-            "items": [
-                "Azure App Service",
-                "Azure Functions",
-                "Azure SQL Database",
-                "Azure DevOps",
-                "IaC: Bicep & ARM Templates"
-            ]
-        },
-        {
-            "id": 3,
-            "category": "Architecture & Practices",
-            "items": [
-                "Microservices",
-                "RESTful API Design",
-                "CI/CD Pipelines",
-                "Clean Code",
-                "System Design & Scalability"
-            ]
+﻿let translations = {};
+let siteData = {};
+let siteDataNl = {};
+
+function getDataPath() {
+    return isNestedPage() ? '../data/' : 'assets/data/';
+}
+
+function setLanguage(lang) {
+    localStorage.setItem('lang', lang);
+    document.documentElement.lang = lang;
+
+    const t = translations[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (t && t[key] !== undefined) {
+            el.textContent = t[key];
         }
-    ]
-};
+    });
+
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.dataset.i18nHtml;
+        if (t && t[key] !== undefined) {
+            el.innerHTML = t[key];
+        }
+    });
+
+    document.querySelectorAll('[data-lang]').forEach(btn => {
+        btn.classList.toggle('terms-lang-link-active', btn.dataset.lang === lang);
+    });
+
+    const titleEl = document.querySelector('[data-i18n-title]');
+    if (titleEl && t && t[titleEl.dataset.i18nTitle] !== undefined) {
+        document.title = t[titleEl.dataset.i18nTitle];
+    }
+
+    const skillsContainer = document.getElementById('skillsContainer');
+    if (skillsContainer) {
+        skillsContainer.innerHTML = '';
+        loadSkills(lang === 'nl' ? siteDataNl : siteData);
+        skillsContainer.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    }
+}
 
 function isNestedPage() {
     return window.location.pathname.replace(/\\/g, '/').includes('/assets/pages/');
@@ -48,7 +55,7 @@ function getHomeSectionHref(anchor) {
 }
 
 function getTermsHref() {
-    return isNestedPage() ? 'terms-nl.html' : 'assets/pages/terms-nl.html';
+    return isNestedPage() ? 'terms.html' : 'assets/pages/terms.html';
 }
 
 function loadSkills(data) {
@@ -70,7 +77,6 @@ function setupReveal() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry, i) => {
             if (entry.isIntersecting) {
-                // Stagger children in a grid
                 setTimeout(() => {
                     entry.target.classList.add('visible');
                 }, 80);
@@ -131,7 +137,7 @@ async function loadHeader() {
             const html = await response.text();
             headerPlaceholder.innerHTML = html;
             updateSharedLinks();
-            setupNav(); // Call setupNav after header is loaded
+            setupNav();
         } catch (error) {
             console.error('Failed to load header:', error);
         }
@@ -153,8 +159,21 @@ async function loadFooter() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
+    const dataPath = getDataPath();
+    const [enTrans, nlTrans, skillsEn, skillsNl] = await Promise.all([
+        fetch(`${dataPath}translations.en.json`).then(r => r.json()),
+        fetch(`${dataPath}translations.nl.json`).then(r => r.json()),
+        fetch(`${dataPath}skills.en.json`).then(r => r.json()),
+        fetch(`${dataPath}skills.nl.json`).then(r => r.json()),
+    ]);
+    translations = { en: enTrans, nl: nlTrans };
+    siteData = skillsEn;
+    siteDataNl = skillsNl;
+
     await loadHeader();
     await loadFooter();
-    loadSkills(siteData);
+    const lang = localStorage.getItem('lang') || 'nl';
+    loadSkills(lang === 'nl' ? siteDataNl : siteData);
+    setLanguage(lang);
     setupReveal();
 });

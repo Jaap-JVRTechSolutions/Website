@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,18 +19,18 @@
                 <div class="hero-banner-logo">
                     <img src="assets/images/logo.svg" alt="JVR TechSolutions Logo">
                 </div>
-                <div class="hero-eyebrow">Available for new projects</div>
+                <div class="hero-eyebrow" data-i18n="hero.eyebrow">Available for new projects</div>
                 <h1>
                     Enterprise .NET<br>
-                    &amp; <em>Cloud</em> Software Consultant
+                    <span class="hero-cloud-highlight">Cloud</span> Software Consultant
                 </h1>
-                <p class="hero-desc">
+                <p class="hero-desc" data-i18n="hero.desc">
                     Building scalable, secure backend systems and cloud-native solutions. 
                     8+ years delivering results for businesses that demand reliability.
                 </p>
                 <div class="hero-actions">
-                    <a href="#contact" class="btn-primary">Start a conversation →</a>
-                    <a href="#skills" class="btn-secondary">View skills</a>
+                    <a href="#contact" class="btn-primary" data-i18n="hero.cta.primary">Start a conversation →</a>
+                    <a href="#skills" class="btn-secondary" data-i18n="hero.cta.secondary">View skills</a>
                 </div>
             </div>
 
@@ -39,15 +39,15 @@
                     <div class="hero-stats">
                         <div class="stat">
                             <div class="stat-number">8+</div>
-                            <div class="stat-label">Years exp.</div>
+                            <div class="stat-label" data-i18n="hero.stat1.label">Years exp.</div>
                         </div>
                         <div class="stat">
                             <div class="stat-number">30+</div>
-                            <div class="stat-label">Projects</div>
+                            <div class="stat-label" data-i18n="hero.stat2.label">Projects</div>
                         </div>
                     </div>
                     <div class="hero-stack">
-                        <div class="hero-stack-label">Core tech stack</div>
+                        <div class="hero-stack-label" data-i18n="hero.stack.label">Core tech stack</div>
                         <div class="stack-chips">
                             <span class="chip">C# / .NET 5 and newer</span>
                             <span class="chip">Entity Framework</span>
@@ -72,16 +72,16 @@
         <div class="container">
             <div class="about-inner">
                 <div class="about-text-block reveal">
-                    <div class="section-label">About me</div>
-                    <h2>Code that holds up. Architecture that scales.</h2>
+                    <div class="section-label" data-i18n="about.label">About me</div>
+                    <h2 data-i18n="about.h2">Code that holds up. Architecture that scales.</h2>
                         <div class="profile-image"><img src="assets/images/Jaap.png" alt="Jaap van Rooijen"></div>
-                    <p>
+                    <p data-i18n="about.p1">
                         I'm a dedicated consultant specialising in enterprise .NET development and Microsoft cloud solutions. Over 8+ years I've delivered projects ranging from APIs to full cloud migrations, always with a clear focus on long-term maintainability.
                     </p>
-                    <p>
+                    <p data-i18n="about.p2">
                         My approach is pragmatic: I combine my technical knowledge with a understanding of what makes software valuable for a business. Clean architecture, proper testing, solid CI/CD.
                     </p>
-                    <p>
+                    <p data-i18n="about.p3">
                         Based in the Netherlands, working with clients across industries including Logistics, Automotive, Audio & Video conference, SaaS and PaaS.
                     </p>
                 </div>
@@ -89,29 +89,29 @@
                     <div class="value-item">
                         <div class="value-icon">🎯</div>
                         <div class="value-text">
-                            <h4>Backend & Architecture</h4>
-                            <p>Designing systems that grow gracefully. Clean architecture, and API-first thinking.</p>
+                            <h4 data-i18n="about.value1.title">Backend & Architecture</h4>
+                            <p data-i18n="about.value1.desc">Designing systems that grow gracefully. Clean architecture, and API-first thinking.</p>
                         </div>
                     </div>
                     <div class="value-item">
                         <div class="value-icon">☁️</div>
                         <div class="value-text">
-                            <h4>Cloud-Native on Azure</h4>
-                            <p>From App Services and Functions to Static Web Apps with end-to-end Azure expertise cost-consciousness built in.</p>
+                            <h4 data-i18n="about.value2.title">Cloud-Native on Azure</h4>
+                            <p data-i18n="about.value2.desc">From App Services and Functions to Static Web Apps with end-to-end Azure expertise cost-consciousness built in.</p>
                         </div>
                     </div>
                     <div class="value-item">
                         <div class="value-icon">🔐</div>
                         <div class="value-text">
-                            <h4>Security by Default</h4>
-                            <p>Security embedded from day one. Compliance, threat modelling, and hardened deployments.</p>
+                            <h4 data-i18n="about.value3.title">Security by Default</h4>
+                            <p data-i18n="about.value3.desc">Security embedded from day one. Compliance, threat modelling, and hardened deployments.</p>
                         </div>
                     </div>
                     <div class="value-item">
                         <div class="value-icon">⚡</div>
                         <div class="value-text">
-                            <h4>Automation & CI/CD</h4>
-                            <p>Reliable, repeatable deployments. Infrastructure as code, automated testing.</p>
+                            <h4 data-i18n="about.value4.title">Automation & CI/CD</h4>
+                            <p data-i18n="about.value4.desc">Reliable, repeatable deployments. Infrastructure as code, automated testing.</p>
                         </div>
                     </div>
                 </div>
@@ -124,9 +124,9 @@
         <div class="hero-bg"></div>
         <div class="container">
             <div class="section-header reveal">
-                <div class="section-label">Technical skills</div>
-                <h2>Expertise Breakdown</h2>
-                <p class="section-intro">Deep specialist knowledge, built over years of real-world delivery.</p>
+                <div class="section-label" data-i18n="skills.label">Technical skills</div>
+                <h2 data-i18n="skills.h2">Expertise Breakdown</h2>
+                <p class="section-intro" data-i18n="skills.intro">Deep specialist knowledge, built over years of real-world delivery.</p>
             </div>
             <div class="skills-container" id="skillsContainer">
                 <!-- Dynamically populated -->
@@ -139,50 +139,50 @@
         <div class="container">
             <div class="experience-inner">
                 <div class="experience-sidebar reveal">
-                    <div class="section-label">Background</div>
-                    <h2>Professional Background</h2>
-                    <p class="exp-tagline" style="margin-top:1rem;">A track record of delivering complex technical projects, on time and without surprises.</p>
+                    <div class="section-label" data-i18n="exp.label">Background</div>
+                    <h2 data-i18n="exp.h2">Professional Background</h2>
+                    <p class="exp-tagline" style="margin-top:1rem;" data-i18n="exp.tagline">A track record of delivering complex technical projects, on time and without surprises.</p>
                 </div>
                 <div class="experience-timeline reveal">
                     <div class="exp-item">
-                        <div class="exp-period">2026 — present</div>
-                        <h3>.NET Consultant: Independent</h3>
-                        <p>Designing and implementing enterprise-grade backend solutions for clients across multiple industries. Specialised in cloud-native Azure architectures, API platform development, and introducing CI/CD practices in teams transitioning from legacy workflows.</p>
+                        <div class="exp-period" data-i18n="exp.item1.period">2026 — present</div>
+                        <h3 data-i18n="exp.item1.title">.NET Consultant: Independent</h3>
+                        <p data-i18n="exp.item1.desc">Designing and implementing enterprise-grade backend solutions for clients across multiple industries. Specialised in cloud-native Azure architectures, API platform development, and introducing CI/CD practices in teams transitioning from legacy workflows.</p>
                     </div>
                     <div class="exp-item">
                         <div class="exp-period">2024 — 2026</div>
-                        <h3>Cloud Software Engineer</h3>
-                        <p>Designing and implementing enterprise-grade backend solutions for clients across multiple industries. Specialised in cloud-native Azure architectures, API platform development, and introducing CI/CD practices in teams transitioning from legacy workflows.</p>
+                        <h3 data-i18n="exp.item2.title">Cloud Software Engineer</h3>
+                        <p data-i18n="exp.item2.desc">Designing and implementing enterprise-grade backend solutions for clients across multiple industries. Specialised in cloud-native Azure architectures, API platform development, and introducing CI/CD practices in teams transitioning from legacy workflows.</p>
                     </div>
                     <div class="exp-item">
                         <div class="exp-period"> 2023 — 2024</div>
-                        <h3>Cloud Backend Engineer</h3>
-                        <p>Working at a scale-up in software development for circular economy solutions.</p>
+                        <h3 data-i18n="exp.item3.title">Cloud Backend Engineer</h3>
+                        <p data-i18n="exp.item3.desc">Working at a scale-up in software development for circular economy solutions.</p>
                     </div>
                     <div class="exp-item">
                         <div class="exp-period"> 2021 — 2023</div>
-                        <h3>Team Lead Software Engineering</h3>
-                        <p>Team lead connected vehicles within a team of 7 developers, Cloud and Embedded.</p>
+                        <h3 data-i18n="exp.item4.title">Team Lead Software Engineering</h3>
+                        <p data-i18n="exp.item4.desc">Team lead connected vehicles within a team of 7 developers, Cloud and Embedded.</p>
                     </div>
                     <div class="exp-item">
                         <div class="exp-period"> 2021 — 2023</div>
-                        <h3>Subject Matter Expert Smart charging</h3>
-                        <p>Additonal role of working on integration between smart charging systems and backend platforms.</p>
+                        <h3 data-i18n="exp.item5.title">Subject Matter Expert Smart charging</h3>
+                        <p data-i18n="exp.item5.desc">Additonal role of working on integration between smart charging systems and backend platforms.</p>
                     </div>
                     <div class="exp-item">
                         <div class="exp-period"> 2019 — 2021</div>
-                        <h3>Embedded Software Engineer</h3>
-                        <p>Design and implement of IoT telemetry applications for connected vehicles, based on CAN-bus data and conversion to telemetry data.</p>
+                        <h3 data-i18n="exp.item6.title">Embedded Software Engineer</h3>
+                        <p data-i18n="exp.item6.desc">Design and implement of IoT telemetry applications for connected vehicles, based on CAN-bus data and conversion to telemetry data.</p>
                     </div>
                     <div class="exp-item">
                         <div class="exp-period">2016 — 2018</div>
-                        <h3>Technical Specialist Hybrid & Electric</h3>
-                        <p>Diagnostics mechanic for hybrid and electric vehicles.</p>
+                        <h3 data-i18n="exp.item7.title">Technical Specialist Hybrid & Electric</h3>
+                        <p data-i18n="exp.item7.desc">Diagnostics mechanic for hybrid and electric vehicles.</p>
                     </div>
                     <div class="exp-item">
                         <div class="exp-period"> 2010 — 2016</div>
-                        <h3>Technical Specialist Automotive</h3>
-                        <p>Started out as a car mechanic and progressed to a technical specialist role in the automotive industry.</p>
+                        <h3 data-i18n="exp.item8.title">Technical Specialist Automotive</h3>
+                        <p data-i18n="exp.item8.desc">Started out as a car mechanic and progressed to a technical specialist role in the automotive industry.</p>
                     </div>
                 </div>
             </div>
@@ -193,13 +193,13 @@
     <section class="contact" id="contact">
         <div class="container">
             <div class="contact-left reveal">
-                <div class="section-label" style="color: rgba(55,138,221,0.9);">Get in touch</div>
-                <h2>Let's build something solid together.</h2>
-                <p style="margin-top:1rem;">Open to new consulting engagements. Whether you're starting from scratch or need to fix what's broken. I'd love to hear about your project.</p>
+                <div class="section-label" style="color: rgba(55,138,221,0.9);" data-i18n="contact.label">Get in touch</div>
+                <h2 data-i18n="contact.h2">Let's build something solid together.</h2>
+                <p style="margin-top:1rem;" data-i18n="contact.p">Open to new consulting engagements. Whether you're starting from scratch or need to fix what's broken. I'd love to hear about your project.</p>
                 <ul class="contact-checklist">
-                    <li>Clear scope, timeline &amp; pricing upfront</li>
-                    <li>Async-first, no unnecessary meetings</li>
-                    <li>Typically responds within one business day</li>
+                    <li data-i18n="contact.check1">Clear scope, timeline &amp; pricing upfront</li>
+                    <li data-i18n="contact.check2">Async-first, no unnecessary meetings</li>
+                    <li data-i18n="contact.check3">Typically responds within one business day</li>
                 </ul>
             </div>
             <div class="contact-right reveal">
@@ -241,6 +241,11 @@
     </section>
 
     <div id="footer-placeholder"></div>
+
+    <nav class="terms-floating-lang" id="langSwitch" aria-label="Language switch">
+        <button class="terms-lang-link terms-lang-link-active" data-lang="nl" onclick="setLanguage('nl')">NL</button>
+        <button class="terms-lang-link" data-lang="en" onclick="setLanguage('en')">EN</button>
+    </nav>
 
     <script src="assets/js/script.js"></script>
 </body>
