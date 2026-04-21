@@ -1,0 +1,36 @@
+{
+  "skills": [
+    {
+      "id": 1,
+      "categoryKey": "skills.category1",
+      "items": [
+        "skills.item1.1",
+        "skills.item1.2",
+        "skills.item1.3",
+        "skills.item1.4"
+      ]
+    },
+    {
+      "id": 2,
+      "categoryKey": "skills.category2",
+      "items": [
+        "skills.item2.1",
+        "skills.item2.2",
+        "skills.item2.3",
+        "skills.item2.4",
+        "skills.item2.5"
+      ]
+    },
+    {
+      "id": 3,
+      "categoryKey": "skills.category3",
+      "items": [
+        "skills.item3.1",
+        "skills.item3.2",
+        "skills.item3.3",
+        "skills.item3.4",
+        "skills.item3.5"
+      ]
+    }
+  ]
+}

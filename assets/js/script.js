@@ -1,6 +1,4 @@
 ﻿let translations = {};
-let siteData = {};
-let siteDataNl = {};
 
 function getDataPath() {
     return isNestedPage() ? '../data/' : 'assets/data/';
@@ -36,9 +34,7 @@ function setLanguage(lang) {
 
     const skillsContainer = document.getElementById('skillsContainer');
     if (skillsContainer) {
-        skillsContainer.innerHTML = '';
-        loadSkills(lang === 'nl' ? siteDataNl : siteData);
-        skillsContainer.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+        loadSkills(t);
     }
 }
 
@@ -55,22 +51,37 @@ function getHomeSectionHref(anchor) {
 }
 
 function getTermsHref() {
-    return isNestedPage() ? 'terms.html' : 'assets/pages/terms.html';
+    const lang = localStorage.getItem('lang') || 'nl';
+    const fileName = lang === 'en' ? 'terms-en.html' : 'terms-nl.html';
+    return isNestedPage() ? fileName : `assets/pages/${fileName}`;
 }
 
-function loadSkills(data) {
+function loadSkills(translations) {
     const container = document.getElementById('skillsContainer');
     if (!container) return;
-    data.skills.forEach(skillGroup => {
-        const group = document.createElement('div');
-        group.className = 'skill-group reveal';
-        const items = skillGroup.items.map(item => `<li>${item}</li>`).join('');
-        group.innerHTML = `
-            <h3>${skillGroup.category}</h3>
-            <ul class="skill-list">${items}</ul>
-        `;
-        container.appendChild(group);
-    });
+    
+    // Load structure from skills-structure.json
+    fetch(isNestedPage() ? '../data/skills-structure.json' : 'assets/data/skills-structure.json')
+        .then(r => r.json())
+        .then(structure => {
+            container.innerHTML = '';
+            structure.skills.forEach(skillGroup => {
+                const group = document.createElement('div');
+                group.className = 'skill-group reveal';
+                const categoryLabel = translations[skillGroup.categoryKey] || skillGroup.categoryKey;
+                const items = skillGroup.items.map(itemKey => {
+                    const label = translations[itemKey] || itemKey;
+                    return `<li>${label}</li>`;
+                }).join('');
+                group.innerHTML = `
+                    <h3>${categoryLabel}</h3>
+                    <ul class="skill-list">${items}</ul>
+                `;
+                container.appendChild(group);
+            });
+            container.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+        })
+        .catch(error => console.error('Failed to load skills:', error));
 }
 
 function setupReveal() {
@@ -92,6 +103,15 @@ function setupNav() {
     const nav = document.getElementById('navbar');
     const hamburger = document.querySelector('.hamburger');
     const navUl = document.querySelector('nav ul');
+    const navLinks = navUl ? navUl.querySelectorAll('a') : [];
+
+    if (!nav || !navUl) return;
+
+    function closeNavMenu() {
+        if (!hamburger) return;
+        hamburger.classList.remove('active');
+        navUl.classList.remove('active');
+    }
 
     window.addEventListener('scroll', () => {
         if (window.scrollY > 20) {
@@ -107,10 +127,15 @@ function setupNav() {
             navUl.classList.toggle('active');
         });
 
+        navLinks.forEach((link) => {
+            link.addEventListener('click', () => {
+                closeNavMenu();
+            });
+        });
+
         document.addEventListener('click', (e) => {
             if (!nav.contains(e.target)) {
-                hamburger.classList.remove('active');
-                navUl.classList.remove('active');
+                closeNavMenu();
             }
         });
     }
@@ -160,20 +185,16 @@ async function loadFooter() {
 
 document.addEventListener('DOMContentLoaded', async () => {
     const dataPath = getDataPath();
-    const [enTrans, nlTrans, skillsEn, skillsNl] = await Promise.all([
+    const [enTrans, nlTrans] = await Promise.all([
         fetch(`${dataPath}translations.en.json`).then(r => r.json()),
         fetch(`${dataPath}translations.nl.json`).then(r => r.json()),
-        fetch(`${dataPath}skills.en.json`).then(r => r.json()),
-        fetch(`${dataPath}skills.nl.json`).then(r => r.json()),
     ]);
     translations = { en: enTrans, nl: nlTrans };
-    siteData = skillsEn;
-    siteDataNl = skillsNl;
 
     await loadHeader();
     await loadFooter();
     const lang = localStorage.getItem('lang') || 'nl';
-    loadSkills(lang === 'nl' ? siteDataNl : siteData);
+    loadSkills(translations[lang]);
     setLanguage(lang);
     setupReveal();
 });

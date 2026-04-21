@@ -130,5 +130,22 @@
   "terms.art10.cl1": "Opdrachtgever is niet gerechtigd zijn uit de Overeenkomst voortvloeiende rechten en/of verplichtingen zonder toestemming van JVR TechSolutions aan een derde over te dragen, tenzij Partijen uitdrukkelijk schriftelijk anders zijn overeengekomen.",
   "terms.art10.cl2": "Indien enige bepaling van deze Overeenkomst niet geldig of niet bindend is of wordt, dan blijven Partijen gebonden aan de overige bepalingen. Partijen zullen dan in goed overleg de ongeldige bepalingen door een andere vervangen die wel geldig is en die de bedoeling van Partijen zoveel mogelijk benadert.",
   "terms.art10.cl3": "Op de Overeenkomst is Nederlands recht van toepassing. Alle geschillen voortvloeiende uit de Overeenkomst, dienen in eerste aanleg te worden voorgelegd aan de bevoegde rechter in het arrondissement waar JVR TechSolutions gevestigd is.",
-  "terms.art10.footer": "Laatst bijgewerkt: 8 april 2026 &nbsp;&middot;&nbsp; JVR TechSolutions &nbsp;&middot;&nbsp; KVK: 42016921"
+  "terms.art10.footer": "Laatst bijgewerkt: 8 april 2026 &nbsp;&middot;&nbsp; JVR TechSolutions &nbsp;&middot;&nbsp; KVK: 42016921",
+  "skills.category1": "Engineering Stack",
+  "skills.item1.1": "C# & .NET (8+ jaar)",
+  "skills.item1.2": "ASP.NET Core",
+  "skills.item1.3": "Entity Framework Core",
+  "skills.item1.4": "SQL Server",
+  "skills.category2": "Azure Cloud",
+  "skills.item2.1": "Azure App Service",
+  "skills.item2.2": "Azure Functions",
+  "skills.item2.3": "Azure SQL Database",
+  "skills.item2.4": "Azure DevOps",
+  "skills.item2.5": "IaC: Bicep & ARM Templates",
+  "skills.category3": "Architectuur & Werkwijzen",
+  "skills.item3.1": "Microservices",
+  "skills.item3.2": "RESTful API Ontwerp",
+  "skills.item3.3": "CI/CD Pipelines",
+  "skills.item3.4": "Clean Code",
+  "skills.item3.5": "Systeemontwerp & Schaalbaarheid"
 }

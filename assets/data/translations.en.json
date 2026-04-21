@@ -130,5 +130,22 @@
   "terms.art10.cl1": "Commissioning Party is not entitled to transfer arising rights and/or obligations from the Agreement to third parties without permission of JVR TechSolutions, unless Parties have agreed otherwise in writing.",
   "terms.art10.cl2": "If any provision of this Agreement is or becomes invalid or non-binding, Parties remain bound to the other provisions. Parties shall replace the invalid provisions in proper consultation with another provision which is valid and approximates the intention of Parties as far as possible.",
   "terms.art10.cl3": "Dutch law applies to the Agreement. All disputes shall in the first instance be presented to the competent court in the district where JVR TechSolutions is located.",
-  "terms.art10.footer": "Last updated: April 8, 2026 &nbsp;&middot;&nbsp; JVR TechSolutions &nbsp;&middot;&nbsp; KVK: 42016921"
+  "terms.art10.footer": "Last updated: April 8, 2026 &nbsp;&middot;&nbsp; JVR TechSolutions &nbsp;&middot;&nbsp; KVK: 42016921",
+  "skills.category1": "Core Engineering Stack",
+  "skills.item1.1": "C# & .NET (8+ years)",
+  "skills.item1.2": "ASP.NET Core",
+  "skills.item1.3": "Entity Framework Core",
+  "skills.item1.4": "SQL Server",
+  "skills.category2": "Azure Cloud Delivery",
+  "skills.item2.1": "Azure App Service",
+  "skills.item2.2": "Azure Functions",
+  "skills.item2.3": "Azure SQL Database",
+  "skills.item2.4": "Azure DevOps",
+  "skills.item2.5": "IaC: Bicep & ARM Templates",
+  "skills.category3": "Architecture & Practices",
+  "skills.item3.1": "Microservices",
+  "skills.item3.2": "RESTful API Design",
+  "skills.item3.3": "CI/CD Pipelines",
+  "skills.item3.4": "Clean Code",
+  "skills.item3.5": "System Design & Scalability"
 }

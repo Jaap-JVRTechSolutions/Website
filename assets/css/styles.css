@@ -32,6 +32,45 @@ body {
     overflow-x: hidden;
 }
 
+/* ─── UTILITY CLASSES ──────────────────────────────────────── */
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    transition: box-shadow 0.25s, all 0.25s;
+}
+
+.card:hover {
+    box-shadow: 0 8px 30px rgba(13,79,150,0.08);
+}
+
+.label-mono {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue-mid);
+}
+
+.text-soft {
+    color: var(--ink-soft);
+}
+
+.text-muted {
+    color: var(--ink-muted);
+    font-weight: 300;
+}
+
+.divider-bottom {
+    border-bottom: 1px solid var(--border);
+}
+
+.divider-top {
+    border-top: 1px solid var(--border);
+    padding-top: 1.5rem;
+}
+
 /* ─── NAVIGATION ───────────────────────────────────────────── */
 #navbar {
     position: fixed;
@@ -216,18 +255,28 @@ body {
     margin-bottom: 2rem;
     width: min(450px, 100%);
     padding: 0;
-    background: transparent;
-    border-radius: 0;
-    border: none;
+    position: relative;
     align-self: flex-start;
     transform: translateY(-10px);
+}
+
+.hero-banner-logo::before {
+    content: '';
+    position: absolute;
+    inset: 8% 4%;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.72) 40%, rgba(247, 250, 255, 0.28) 64%, rgba(255, 255, 255, 0) 82%);
+    filter: blur(20px);
+    z-index: 0;
+    pointer-events: none;
 }
 
 .hero-banner-logo img {
     width: 100%;
     height: auto;
     display: block;
-    filter: drop-shadow(0 10px 30px rgba(0,0,0,0.24));
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 0 22px rgba(255,255,255,0.72)) drop-shadow(0 10px 24px rgba(13,79,150,0.10));
 }
 
 .hero-eyebrow {
@@ -242,9 +291,10 @@ body {
     text-transform: uppercase;
     margin-bottom: 1.5rem;
     padding: 0.4rem 0.9rem;
-    background: rgba(69, 201, 97, 0.16);
+    background: rgba(69, 201, 97, 0.42);
     border-radius: 20px;
-    border: 1px solid rgba(69, 201, 97, 0.4);
+    border: 1px solid rgba(69, 201, 97, 0.62);
+    box-shadow: 0 6px 16px rgba(69, 201, 97, 0.14);
 }
 
 .hero-eyebrow::before {
@@ -613,7 +663,7 @@ section h2 {
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 2rem;
-    transition: box-shadow 0.25s;
+    transition: box-shadow 0.25s, all 0.25s;
 }
 
 .skill-group:hover {
@@ -621,15 +671,15 @@ section h2 {
 }
 
 .skill-group h3 {
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--blue-mid);
     font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue-mid);
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
     border-bottom: 2px solid var(--blue-pale);
-    font-family: 'JetBrains Mono', monospace;
 }
 
 .skill-list {
