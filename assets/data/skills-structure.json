@@ -31,6 +31,15 @@
         "skills.item3.4",
         "skills.item3.5"
       ]
+    },
+    {
+      "id": 4,
+      "categoryKey": "skills.category4",
+      "items": [
+        "skills.item4.1",
+        "skills.item4.2",
+        "skills.item4.3"
+      ]
     }
   ]
 }

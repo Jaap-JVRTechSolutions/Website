@@ -36,6 +36,11 @@ function setLanguage(lang) {
     if (skillsContainer) {
         loadSkills(t);
     }
+
+    const experienceTimeline = document.getElementById('experienceTimeline');
+    if (experienceTimeline) {
+        loadExperience(t);
+    }
 }
 
 function isNestedPage() {
@@ -61,7 +66,7 @@ function loadSkills(translations) {
     if (!container) return;
     
     // Load structure from skills-structure.json
-    fetch(isNestedPage() ? '../data/skills-structure.json' : 'assets/data/skills-structure.json')
+    fetch(`${getDataPath()}skills-structure.json`)
         .then(r => r.json())
         .then(structure => {
             container.innerHTML = '';
@@ -82,6 +87,37 @@ function loadSkills(translations) {
             container.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
         })
         .catch(error => console.error('Failed to load skills:', error));
+}
+
+function loadExperience(translations) {
+    const timeline = document.getElementById('experienceTimeline');
+    if (!timeline) return;
+
+    fetch(`${getDataPath()}experience-structure.json`)
+        .then(response => response.json())
+        .then(structure => {
+            timeline.replaceChildren();
+
+            structure.items.forEach(item => {
+                const key = `exp.${item}.`;
+                const entry = document.createElement('article');
+                entry.className = 'exp-item';
+
+                const period = document.createElement('div');
+                period.className = 'exp-period';
+                period.textContent = translations[`${key}period`] || '';
+
+                const title = document.createElement('h3');
+                title.textContent = translations[`${key}title`] || '';
+
+                const description = document.createElement('p');
+                description.textContent = translations[`${key}desc`] || '';
+
+                entry.append(period, title, description);
+                timeline.appendChild(entry);
+            });
+        })
+        .catch(error => console.error('Failed to load experience:', error));
 }
 
 function setupReveal() {
@@ -194,7 +230,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     await loadHeader();
     await loadFooter();
     const lang = localStorage.getItem('lang') || 'nl';
-    loadSkills(translations[lang]);
     setLanguage(lang);
     setupReveal();
 });

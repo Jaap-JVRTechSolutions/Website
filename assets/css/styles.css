@@ -942,6 +942,11 @@ section h2 {
     color: rgba(255,255,255,0.6);
     line-height: 1.75;
     font-weight: 300;
+    margin-top: 1rem;
+}
+
+.contact .section-label {
+    color: rgba(55,138,221,0.9);
 }
 
 .contact-right {
